@@ -1,0 +1,20 @@
+from mcpi.minecraft import Minecraft
+from mcpi import block
+
+mc = Minecraft.create()
+
+x, y, z = mc.player.getTilePos()
+
+# Build floor
+mc.setBlocks(x, y, z, x+6, y, z+6, block.WOOD_PLANKS.id)
+
+# Build walls
+mc.setBlocks(x, y+1, z, x+6, y+4, z+6, block.BRICK_BLOCK.id)
+
+# Make inside empty
+mc.setBlocks(x+1, y+1, z+1, x+5, y+3, z+5, block.AIR.id)
+
+# Add a door opening
+mc.setBlocks(x+3, y+1, z, x+3, y+2, z, block.AIR.id)
+
+mc.postToChat("Your Python house is ready!")
